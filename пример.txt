@@ -1,0 +1,34 @@
+ while (1)
+  {
+	  //int16_t qwe=readADC_Differential_0_1();
+	  HAL_Delay(1);
+	  		ProcessEnc();
+  }
+
+void ProcessEnc(){
+	EncResult tmp = CheckEncoder();
+	switch(tmp){
+	case ENC_DOUBLE:
+		JumpMenu(UP);
+		break;
+	case ENC_LEFT:
+		JumpMenu(LEFT);
+//		test_symb--;
+//		if(test_symb<32){test_symb=32;}
+		break;
+	case ENC_RIGHT:
+		JumpMenu(RIGHT);
+
+//		test_symb++;
+//		if(test_symb>64){test_symb=64;}
+		break;
+	case ENC_SHORT:
+		JumpMenu(DOWN);
+		break;
+	case ENC_LONG:
+		JumpMenu(LONG);
+		break;
+	case ENC_NOTHING:
+		break;
+	}
+}
